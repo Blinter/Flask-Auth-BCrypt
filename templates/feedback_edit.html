@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+User Authentication
+{% endblock %}
+{% block header %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+<p class="h1">Edit Feedback</p>
+{% endblock %}
+{% block content %}
+
+{% block messages %}
+{% endblock %}
+{% if feedback %}
+<form method="POST" class="d-flex flex-wrap gap-3 mx-auto">
+    {% if form %}{{ form.hidden_tag() }}{% endif %}
+    <p>Title<br/>
+    <textarea cols="60" name="title" rows="2">{% if not feedback.title %}{{form.title}}{% else %}{{feedback.title}}{% endif %}</textarea>
+    <br/>
+    <p>
+    Content
+    <br/>
+    <textarea cols="60" name="content" rows="10">{% if not feedback.content
+        %}{{form.content}}{% else %}{{feedback.content}}{% endif %}</textarea>
+    <br/>
+    <button type="submit" class="btn btn-primary"
+           formaction="/feedback/{{feedback.id}}/update">Save</button>
+    <button type="submit"
+            formaction="/feedback/{{feedback.id}}/delete"
+            class="btn btn-danger">Delete</button>
+    <button type="button" formmethod=""
+            onclick="window.location.href='/users/{{feedback.username.username}}'"
+            class="btn btn-secondary">Back</button>
+</form>
+{% endif %}
+  <button type="submit" class="btn btn-danger col-xs-6"
+		  onclick="location.href='/logout'">
+    Logout
+  </button>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+{% endblock %}

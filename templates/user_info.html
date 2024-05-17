@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+User Authentication
+{% endblock %}
+{% block header %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+<p class="h1">User Page</p>
+</div>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+
+{% block messages %}
+{% endblock %}
+{% if user.created_feedback %}
+<div class="d-flex flex-wrap gap-3 mx-auto bg-white"
+	 style="width: 480px;">
+	{% for item in user.created_feedback %}
+	<div class="card" style="width: 18rem;">
+	<div class="card-title"><b>{{item.title|truncate(64,true,'...')
+		}}</b></div>
+    <div class="card-text">{{item.content|truncate(128,true,'...')}}</div>
+	</div>
+	<form id="user-login-form" action="/feedback/{{item.id}}/update" class="mx-auto"
+      method="GET">
+<div class="btn-group-vertical gap-2" role="group" aria-label="Controls">
+  <button type="submit" class="btn btn-secondary">
+    Edit
+  </button></form>
+	<form id="user-login-form" action="/feedback/{{item.id}}/delete"
+		  class="mx-auto"
+      method="POST">
+  <button type="submit" class="btn btn-danger"
+		  onclick="location.href='/feedback/{{item.id}}/delete'">
+    Delete
+  </button></div></form>
+	<hr class="my-4">
+	{% endfor %}
+</div>
+{% endif %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+  <button type="submit" class="align-middle btn btn-primary"
+		  onclick="location.href='/users/{{user.username}}/feedback/add'">
+    Add Feedback
+  </button>
+  <button type="submit" class="btn btn-danger"
+		  onclick="location.href='/logout'">
+    Logout
+  </button>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+{% endblock %}

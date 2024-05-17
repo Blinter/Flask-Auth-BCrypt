@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+404 Not Found!
+{% endblock %}
+{% block header %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+<p class="h1">User Auth</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+
+{% block messages %}
+{% endblock %}
+
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+  <button type="submit" class="btn btn-secondary"
+		  onclick="location.href='/register'">
+    Register
+  </button>
+</div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+{% endblock %}

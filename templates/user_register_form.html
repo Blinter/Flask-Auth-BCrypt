@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+User Register Form
+{% endblock %}
+{% block header %}
+<div class="form-check mx-auto" style="width: 480px" >
+<p class="h1">User Registration</p>
+{% endblock %}
+
+{% block messages %}
+{% endblock %}
+
+{% block content %}
+<form id="user-register-form" class="mx-auto" style="width: 480px"
+      method="POST">
+{{ form.hidden_tag() }}
+      <div>
+        {{ form.username.label }} {{ form.username }}
+        {% for error in form.username.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.password.label }} {{ form.password }}
+        {% for error in form.password.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.email.label }} {{ form.email }}
+        {% for error in form.email.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.first_name.label }} {{ form.first_name }}
+        {% for error in form.first_name.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.last_name.label }} {{ form.last_name }}
+        {% for error in form.last_name.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.submit() }}
+      </div>
+    </form>
+  <br />
+  <button type="submit"
+          class="btn btn-primary bg-danger text-light"
+          onclick="location.href='/secret'">
+    Secret
+  </button>
+  <button type="submit"
+          class="btn btn-primary bg-primary text-light"
+          onclick="location.href='/login'">
+    Already Registered?
+  </button>
+</div>
+{% endblock %}
+{% block javascript %}
+{{ super() }}
+{% endblock %}

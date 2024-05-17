@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+User Authentication
+{% endblock %}
+{% block header %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+<p class="h1">Add Feedback</p>
+{% endblock %}
+{% block content %}
+
+{% block messages %}
+{% endblock %}
+<form method="POST" class="d-flex flex-wrap gap-3 mx-auto">
+  {{ form.hidden_tag() }}
+    <p>Title<br/><textarea cols="60" name="title" rows="2"></textarea><br/>
+    <p>Content<br/><textarea cols="60" name="content" rows="10"></textarea><br/>
+    <button type="submit" class="btn btn-primary"
+           formaction="/users/{{username}}/feedback/add">Add Feedback</button>
+    <button type="button" formmethod=""
+            onclick="window.location.href='/users/{{username}}'"
+            class="btn btn-secondary">Back</button>
+</form>
+  <button type="submit" class="btn btn-danger col-xs-6"
+		  onclick="location.href='/logout'">
+    Logout
+  </button>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+{% endblock %}

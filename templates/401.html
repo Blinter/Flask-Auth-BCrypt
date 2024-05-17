@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Not Authorized!
+{% endblock %}
+{% block header %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+<p class="h1">{{user.username}}, this action has been logged!</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+
+{% block messages %}
+{% endblock %}
+
+<div class="d-flex flex-wrap gap-3 mx-auto" style="width: 480px;">
+	{% if user %}
+  <button type="submit" class="btn btn-primary"
+		  onclick="location.href='/users/{{user.username}}'">
+    {{user.username}}
+  </button>
+	{% else %}
+  <button type="submit" class="btn btn-secondary"
+		  onclick="location.href='/register'">
+    Register
+  </button>
+  <button type="submit" class="btn btn-secondary"
+		  onclick="location.href='/login'">
+    Login
+  </button>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+{% endblock %}
