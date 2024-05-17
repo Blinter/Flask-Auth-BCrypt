@@ -3,8 +3,6 @@ from unittest import TestCase
 from app import app
 from models import db, User, Feedback
 from app_long_forms import *
-# Additional Testing
-# from models import Pet, db, connect_db
 
 app.config['WTF_CSRF_ENABLED'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///sqla_intro_user_auth'
